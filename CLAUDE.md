@@ -117,7 +117,72 @@ DefTimeTensor[field[a], M3, GenSet[], PrintAs -> "ψ"]
 - xAct v1.2.0 tensor algebra system
 - Required xAct packages: xTensor, SymManipulator, xPerm, xCore, xTras
 
+## Documentation Styling Guidelines
+
+### xPlain Documentation System
+The comprehensive documentation is written using the xPlain package system in `xAct/Hamilcar/Documentation/English/Documentation.m`. This source file generates an interactive Mathematica notebook.
+
+#### Core xPlain Elements
+- `Title@"Title Text"`: Document title
+- `Author@"Author Name"`: Document author
+- `Section@"Section Name"`: Major section headers
+- `Comment@"Text"`: Explanatory text (appears in final notebook)
+- `Code[...]`: Executable code blocks (appears in final notebook)
+- `DisplayExpression[expr, EqnLabel->"label"]`: Display mathematical results
+
+#### Comment Environment Rules
+**CRITICAL**: Only include Comments that discuss content appearing in Code blocks. Remove any Comments discussing:
+- Utility functions not shown in Code blocks
+- Setup code not wrapped in Code blocks
+- Internal implementation details not displayed to users
+
+#### Mathematical Notation
+**Use plaintext only** in Comment environments:
+- ✅ "h ab" instead of mathematical h_{ab}
+- ✅ "nabla a" instead of ∇_a
+- ✅ "epsilon abc" instead of ε_{abc}
+- ✅ "pi ab" instead of π^{ab}
+- ✅ "integral of dt integral of d cubed x" instead of ∫dt∫d³x
+
+#### Inline Code Formatting
+**All code elements in Comments must be quoted**:
+- Function names: `"DefCanonicalField"`, `"PoissonBracket"`, `"FindAlgebra"`
+- Variables: `"$DynamicalMetric"`, `"$ManualSmearing"`
+- Code expressions: `"G[-a,-b]"`, `"CD[-a]@"`, `"<<xAct\`Hamilcar\`"`
+- Boolean values: `"True"`, `"False"`
+- File paths: `"./install.sh"`, `"~/.Wolfram/Applications/xAct/"`
+- Software names: `"Mathematica"`
+
+#### Function Documentation Terminology
+Use correct terminology for Hamilcar functions:
+- ✅ "Register the expansion rule" (not "Apply total derivative preprocessing")
+- `PrependTotalFrom` **registers expansion rules** for `TotalFrom` to convert composite quantities to canonical variables
+- `PrependTotalTo` **registers contraction rules** for `TotalTo` to convert back to compact notation
+
+#### Code Block Content Guidelines
+Show **only essential user-facing code**:
+- ✅ `DefCanonicalField` definitions
+- ✅ `PoissonBracket` calculations  
+- ✅ Core Hamilcar function calls
+- ✅ Mathematical result displays
+- ❌ Internal utility function definitions
+- ❌ Complex setup/configuration code
+- ❌ Development-only helper functions
+
+#### Branch Strategy for Documentation
+- **`master` branch**: Contains compiled `.nb` notebooks for end users
+- **`devel` branch**: Contains source `.m` files for development
+- `.gitignore` configured to ignore `.m` files under `Documentation/` on master branch
+
+### Content Structure Best Practices
+1. **Theoretical context first**: Explain the physics/mathematics before showing code
+2. **Minimal code display**: Show only what users need to see
+3. **Clear progression**: Build from simple examples to complex calculations
+4. **Consistent terminology**: Use the same technical terms throughout
+5. **Self-contained sections**: Each section should be understandable independently
+
 ## File Extensions and Languages
 - `.m`: Mathematica package files
 - `.wl`: Wolfram Language files
 - `.sh`: Shell scripts for installation
+- `.nb`: Mathematica notebook files (generated from .m documentation sources)
