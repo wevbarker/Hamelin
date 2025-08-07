@@ -1,15 +1,15 @@
 Block[{Print=DoNothing},
 <<xAct`xPlain`;
 ];
-Title@"Hamilcar: MCP-compliant Hamiltonian analysis tools";
+Title@"Hamilcar: MCP-compliant tools for Hamiltonian analysis";
 Author@"Will E. V. Barker";
 
 Comment@"This is the main documentation for the Hamilcar package, which extends xAct to perform canonical field theory calculations in a 3+1 dimensional spacetime decomposition.
 
-Hamilcar is a software package for Wolfram (formerly Mathematica) designed to perform canonical field theory calculations in 3+1 dimensions. The canonical formulation assumes the action S to have the structure S = integral of dt integral of d cubed x [pi psi(x,t) dot psi(x,t) - H(psi,pi psi)], where the ingredients are:
-- The dynamical fields psi(x,t) are real tensors on the spatial manifold, which may be a collection of distinct fields, each field having some collection of spatial indices (a, b, etc.), perhaps with some symmetry among the indices.
-- The conjugate momenta pi psi(x,t) are the canonical momenta conjugate to the fields psi(x,t).  
-- The Hamiltonian density H(psi,pi psi) is constructed from the fields, momenta, spatial metric, and spatial derivatives.
+Hamilcar is a software package for Wolfram (formerly Mathematica) designed to perform canonical field theory calculations in 3+1 dimensions. The canonical formulation assumes the action to have the standard form with the ingredients:
+- The dynamical fields are real tensors on the spatial manifold, which may be a collection of distinct fields, each field having some collection of spatial indices, perhaps with some symmetry among the indices.
+- The conjugate momenta are the canonical momenta conjugate to the fields.  
+- The Hamiltonian density is constructed from the fields, momenta, spatial metric, and spatial derivatives.
 
 The package provides essential functions for canonical field theory:
 - \"DefCanonicalField\": defines canonical field pairs and their conjugate momenta
@@ -24,13 +24,11 @@ Installation and Setup:
 To install Hamilcar, copy the \"xAct/Hamilcar\" directory to your \"~/.Wolfram/Applications/xAct/\" or \"~/.Mathematica/Applications/xAct/\" directory. In \"Mathematica\", load the package with: \"<<xAct`Hamilcar`\".
 
 Pre-defined geometry:
-When you first run \"<<xAct`Hamilcar`\" the software defines a three-dimensional spatial hypersurface with the ingredients: a, b, c, ..., z are spatial coordinate indices (corresponding to adapted coordinates in the ADM prescription); \"G[-a,-b]\" is the induced metric on the spatial hypersurface; \"CD[-a]@\" is the spatial covariant derivative; \"epsilonG[-a,-b,-c]\" is the induced totally antisymmetric tensor on the spatial hypersurface.
+When you first run \"<<xAct`Hamilcar`\" the software defines a three-dimensional spatial hypersurface with the following geometric objects: spatial coordinate indices (corresponding to adapted coordinates in the ADM prescription); \"G[-a,-b]\" is the induced metric on the spatial hypersurface; \"CD[-a]@\" is the spatial covariant derivative; \"epsilonG[-a,-b,-c]\" is the induced totally antisymmetric tensor on the spatial hypersurface.
 
 Key global variables:
 - \"$DynamicalMetric\": Controls whether spatial metric is treated as dynamical field (default: \"True\")
-- \"$ManualSmearing\": When \"True\", disables automatic smearing in Poisson brackets (default: \"False\")
-- \"$RegisteredFields\": List of registered field tensors
-- \"$RegisteredMomenta\": List of registered momentum tensors";
+- \"$ManualSmearing\": When \"True\", disables automatic smearing in Poisson brackets (default: \"False\")";
 
 Section@"General relativity";
 Comment@"Canonical formulation of general relativity using the ADM decomposition.

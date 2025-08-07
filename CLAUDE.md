@@ -174,6 +174,39 @@ Show **only essential user-facing code**:
 - **`devel` branch**: Contains source `.m` files for development
 - `.gitignore` configured to ignore `.m` files under `Documentation/` on master branch
 
+## Repository Structure and Branch Strategy
+
+The repository maintains a two-branch structure for clean separation of development and production content:
+
+### Branch Organization
+- **`master`**: Default public-facing branch containing stable, deployable code
+  - Always in deployable state
+  - Contains only essential public files
+  - Documentation exists only as compiled `.nb` files
+- **`devel`**: Development branch for new features and changes
+  - May contain unstable or experimental code
+  - Contains construction materials and source files
+  - Not intended for production use
+
+### Master Branch Structure
+At root level, `master` should contain only:
+- `README.md`: Project overview and usage instructions
+- `LICENSE.md`: License information
+- `CLAUDE.md`: Configuration for Claude Code
+- `xAct/Hamilcar/*`: The complete Hamilcar codebase
+
+### Documentation File Management
+- **On `master`**: `xAct/Hamilcar/Documentation/English/` contains ONLY `Documentation.nb` (the compiled notebook)
+- **On `devel`**: `xAct/Hamilcar/Documentation/English/` may contain additional source files:
+  - `Documentation.m`: xPlain source file for generating the notebook
+  - Other construction materials and development files
+
+### Workflow Guidelines
+1. All development work occurs on `devel` branch
+2. When ready for release, checkout specific files from `devel` to `master`
+3. Only essential, polished content moves to `master`
+4. Source files remain on development branches only
+
 ### Content Structure Best Practices
 1. **Theoretical context first**: Explain the physics/mathematics before showing code
 2. **Minimal code display**: Show only what users need to see
